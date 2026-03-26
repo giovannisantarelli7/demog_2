@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Legge 40/2025 · Ricostruzione post-calamità</title>
+  <style>
+    :root {
+      --bg: #f7f2eb;
+      --panel: rgba(255,255,255,0.88);
+      --line: rgba(50,33,20,0.14);
+      --text: #1f1a17;
+      --muted: #6c625a;
+      --shadow: 0 18px 45px rgba(46,28,15,0.10);
+      --brick: #9b4a33;
+      --brown: #8c6340;
+      --blue: #3f6f9c;
+      --paper: rgba(255,255,255,0.74);
+      --paper-strong: rgba(255,255,255,0.94);
+      --ok: #315f49;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      line-height: 1.55;
+      background:
+        radial-gradient(circle at top left, rgba(155,74,51,0.08), transparent 26%),
+        linear-gradient(180deg, #f8f4ee 0%, var(--bg) 100%);
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .sheet {
+      background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0.18));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-main {
+      padding: 32px 34px 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(255,255,255,0.18));
+    }
+
+    .hero-side {
+      padding: 32px 30px 28px;
+      border-left: 1px solid var(--line);
+      background: rgba(255,255,255,0.36);
+    }
+
+    .eyebrow, .kicker {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 0.98;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .subhead {
+      max-width: 52ch;
+      font-size: 18px;
+      color: #39322d;
+      margin: 0;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .law-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(155,74,51,0.22);
+      background: rgba(155,74,51,0.08);
+      color: var(--brick);
+      font-size: 14px;
+    }
+
+    .summary-box {
+      background: var(--paper-strong);
+      border: 1px solid var(--line);
+      padding: 18px 18px 16px;
+    }
+
+    .summary-box h2 {
+      margin: 0 0 10px 0;
+      font-size: 26px;
+      line-height: 1.05;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .summary-box p {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+
+    .summary-box p:last-child { margin-bottom: 0; }
+
+    .content {
+      padding: 24px 28px 30px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .fact {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 18px 18px 16px;
+      min-height: 168px;
+    }
+
+    .fact .num {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: var(--brick);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fact h3 {
+      margin: 0 0 8px 0;
+      font-size: 26px;
+      line-height: 1.05;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .fact p {
+      margin: 0;
+      font-size: 16px;
+      color: #39322d;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 22px 22px 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      line-height: 1.02;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .card p,
+    .card li,
+    td,
+    th {
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0 0 10px 0;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--brick);
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--brick);
+      background: rgba(155,74,51,0.08);
+      color: #3e3129;
+      font-size: 15px;
+    }
+
+    .compare {
+      background: var(--paper-strong);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .compare-head {
+      display: grid;
+      grid-template-columns: 240px 1fr 1fr;
+      background: rgba(155,74,51,0.07);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .compare-head div {
+      padding: 14px 16px;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 240px 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .compare-row:last-child { border-bottom: 0; }
+
+    .compare-row > div {
+      padding: 16px;
+    }
+
+    .compare-topic {
+      background: rgba(255,255,255,0.48);
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .compare-old {
+      background: rgba(140,99,64,0.07);
+    }
+
+    .compare-new {
+      background: rgba(49,95,73,0.06);
+    }
+
+    .compare strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      padding: 18px 22px 22px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.26);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid-2,
+      .facts,
+      .compare-head,
+      .compare-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .compare-head { display: none; }
+
+      .compare-row {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .compare-topic {
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+
+      .compare-old::before,
+      .compare-new::before {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+      }
+
+      .compare-old::before { content: "Vecchio approccio"; }
+      .compare-new::before { content: "Legge 40/2025"; }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 14px; }
+      .hero-main, .hero-side, .content { padding-left: 16px; padding-right: 16px; }
+      .card, .fact { padding: 16px; }
+      h1 { font-size: 34px; }
+      .subhead, .card p, .fact p { font-size: 15px; }
+      .card h2 { font-size: 26px; }
+      .fact h3 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <article class="sheet">
+      <header class="hero">
+        <div class="hero-main">
+          <div class="eyebrow">Ricostruzione post-calamità</div>
+          <h1>Legge 40/2025</h1>
+          <p class="subhead">
+            La legge quadro del 18 marzo 2025 mette ordine alla fase della <strong>ricostruzione</strong> dopo le calamità,
+            cioè al momento che viene dopo l’emergenza. L’idea è evitare che ogni evento venga gestito ogni volta con regole diverse,
+            creando una cornice nazionale più stabile.
+          </p>
+          <div class="law-badge">Non riguarda il soccorso immediato: riguarda la ricostruzione dopo l’emergenza</div>
+        </div>
+        <aside class="hero-side">
+          <div class="summary-box">
+            <h2>In una frase</h2>
+            <p>
+              La legge 40/2025 prova a trasformare in <strong>regola generale</strong> un modello di ricostruzione che negli ultimi anni,
+              soprattutto dopo il sisma 2016, è stato costruito di volta in volta con norme speciali.
+            </p>
+          </div>
+        </aside>
+      </header>
+
+      <section class="content">
+        <div class="facts">
+          <section class="fact">
+            <div class="num">01 · cosa fa</div>
+            <h3>Cornice unica</h3>
+            <p>
+              Introduce una legge-quadro per la ricostruzione di rilievo nazionale, invece di ripartire ogni volta da zero.
+            </p>
+          </section>
+          <section class="fact">
+            <div class="num">02 · chi decide</div>
+            <h3>Commissario + Cabina</h3>
+            <p>
+              Fissa una governance stabile: Commissario straordinario, Cabina di coordinamento e ruolo centrale di Casa Italia.
+            </p>
+          </section>
+          <section class="fact">
+            <div class="num">03 · come cambia</div>
+            <h3>Ricostruzione integrata</h3>
+            <p>
+              Non guarda solo agli edifici: include anche urbanistica, ambiente, opere pubbliche, lavoro, imprese e territorio.
+            </p>
+          </section>
+        </div>
+
+        <div class="grid-2">
+          <section class="card">
+            <div class="kicker">Collegamento con il sisma 2016</div>
+            <h2>È legata a quel modello?</h2>
+            <p>
+              <strong>Sì, nel metodo.</strong> La legge 40/2025 nasce per rendere più ordinato e ripetibile un assetto che in Italia si è formato
+              soprattutto nelle grandi ricostruzioni recenti, con il sisma 2016 come riferimento importante.
+            </p>
+            <p>
+              <strong>No, nell’applicazione diretta.</strong> Le ricostruzioni già in corso, compresa quella del Centro Italia 2016, non passano
+              automaticamente sotto questa legge: continuano a seguire le loro regole speciali.
+            </p>
+            <div class="callout">
+              Quindi: la legge 40 non è la legge del sisma 2016, ma una sistemazione generale di un metodo maturato anche da quell’esperienza.
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="kicker">Le novità principali</div>
+            <h2>Cosa introduce</h2>
+            <ul class="list">
+              <li>lo <strong>stato di ricostruzione di rilievo nazionale</strong>, separato dalla fase di emergenza;</li>
+              <li>un <strong>piano generale pluriennale</strong> degli interventi;</li>
+              <li>piani speciali per <strong>ricostruzione pubblica</strong> e infrastrutture ambientali;</li>
+              <li>una <strong>Conferenza permanente</strong> per riunire autorizzazioni e pareri;</li>
+              <li>più strumenti di <strong>monitoraggio, trasparenza e controllo</strong>;</li>
+              <li>più attenzione a <strong>imprese, lavoro e rilancio del territorio</strong>.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">governance stabile</span>
+              <span class="chip">tempi più ordinati</span>
+              <span class="chip">meno frammentazione</span>
+              <span class="chip">visione territoriale</span>
+            </div>
+          </section>
+        </div>
+
+        <section class="compare">
+          <div class="compare-head">
+            <div></div>
+            <div>Vecchio approccio</div>
+            <div>Legge 40/2025</div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Impianto normativo</div>
+            <div class="compare-old">
+              <strong>Norme speciali evento per evento</strong>
+              Ogni grande calamità tendeva ad avere decreti, ordinanze e deroghe costruiti caso per caso.
+            </div>
+            <div class="compare-new">
+              <strong>Legge-quadro nazionale</strong>
+              La struttura base è definita prima e non deve essere reinventata ogni volta.
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Passaggio dall’emergenza</div>
+            <div class="compare-old">
+              <strong>Confine meno netto</strong>
+              Il passaggio tra emergenza e ricostruzione era spesso disperso tra proroghe e atti successivi.
+            </div>
+            <div class="compare-new">
+              <strong>Fase riconoscibile</strong>
+              Nasce lo stato di ricostruzione di rilievo nazionale, con durata e perimetro più chiari.
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Governance</div>
+            <div class="compare-old">
+              <strong>Assetti variabili</strong>
+              Ruoli e rapporti tra istituzioni cambiavano da evento a evento.
+            </div>
+            <div class="compare-new">
+              <strong>Catena decisionale stabile</strong>
+              Commissario straordinario, Cabina di coordinamento e Casa Italia diventano l’ossatura ordinaria del sistema.
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Autorizzazioni</div>
+            <div class="compare-old">
+              <strong>Procedure più frammentate</strong>
+              Pareri e autorizzazioni seguivano spesso percorsi separati e tempi meno prevedibili.
+            </div>
+            <div class="compare-new">
+              <strong>Passaggi concentrati</strong>
+              La Conferenza permanente punta a riunire più rapidamente i diversi livelli autorizzativi.
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Idea di ricostruzione</div>
+            <div class="compare-old">
+              <strong>Più centrata sugli edifici</strong>
+              L’attenzione era spesso concentrata soprattutto sui danni materiali e sulla ricostruzione privata.
+            </div>
+            <div class="compare-new">
+              <strong>Più integrata</strong>
+              Oltre agli edifici entrano in modo esplicito urbanistica, ambiente, lavoro, imprese e sviluppo locale.
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Controlli e trasparenza</div>
+            <div class="compare-old">
+              <strong>Regole meno uniformi</strong>
+              Trasparenza, monitoraggio e controllo dipendevano molto dalle norme del singolo evento.
+            </div>
+            <div class="compare-new">
+              <strong>Presidio più strutturato</strong>
+              La legge rafforza fondi dedicati, pubblicità degli atti, monitoraggio centralizzato e controlli di legittimità.
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="compare-topic">Limite che resta</div>
+            <div class="compare-old">
+              <strong>Forte dipendenza dagli atti successivi</strong>
+              Molto veniva definito nel tempo con ulteriori provvedimenti e adattamenti.
+            </div>
+            <div class="compare-new">
+              <strong>Quadro più ordinato, ma non autosufficiente</strong>
+              Per i dettagli dei contributi e delle misure applicative servono ancora norme specifiche per i singoli eventi.
+            </div>
+          </div>
+        </section>
+      </section>
+
+    </article>
+  </div>
+</body>
+</html>
